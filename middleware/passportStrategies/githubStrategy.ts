@@ -1,7 +1,7 @@
-import { Request } from "express";
 import { Strategy as GitHubStrategy } from "passport-github2";
-import { VerifyCallback } from "passport-oauth2";
 import { PassportStrategy } from "../../interfaces/index";
+import { Request } from "express";
+import {  } from "../../node_modules/@types/passport-github2/index.d";
 
 const githubStrategy: GitHubStrategy = new GitHubStrategy(
   {
@@ -16,8 +16,8 @@ const githubStrategy: GitHubStrategy = new GitHubStrategy(
     req: Request,
     accessToken: string,
     refreshToken: string,
-    profile: TProfile,
-    done: VerifyCallback
+    profile: any,
+    done: (err?: Error | null, profile?: any) => void
   ) => {}
 );
 
