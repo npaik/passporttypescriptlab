@@ -20,7 +20,6 @@ router.post(
     successRedirect: "/dashboard",
     failureRedirect: "/auth/login",
     failureMessage: true,
-    /* FIX ME: 😭 failureMsg needed when login fails */
   })
 );
 
