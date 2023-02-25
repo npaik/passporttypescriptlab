@@ -1,7 +1,7 @@
 import { Strategy as GitHubStrategy } from "passport-github2";
 import { PassportStrategy } from "../../interfaces/index";
 import { Request } from "express";
-import {  } from "../../node_modules/@types/passport-github2/index.d";
+import {} from "../../node_modules/@types/passport-github2/index.d";
 
 const githubStrategy: GitHubStrategy = new GitHubStrategy(
   {
