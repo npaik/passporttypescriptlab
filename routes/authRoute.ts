@@ -4,6 +4,12 @@ import { forwardAuthenticated } from "../middleware/checkAuth";
 
 const router = express.Router();
 
+declare module "express-session" {
+  interface SessionData {
+    messages: { [key: string]: any };
+  }
+}
+
 router.get("/login", forwardAuthenticated, (req, res) => {
   res.render("login");
 });
