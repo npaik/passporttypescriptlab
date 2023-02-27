@@ -3,12 +3,19 @@ import expressLayouts from "express-ejs-layouts";
 import session from "express-session";
 import path from "path";
 import passportMiddleware from "./middleware/passportMiddleware";
+const partials = require("express-partials");
+
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+
+dotenv.config();
+console.log(process.env);
 
 const port = process.env.port || 8000;
 
 const app = express();
 
 app.set("view engine", "ejs");
+app.use(partials());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
