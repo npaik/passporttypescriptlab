@@ -5,7 +5,7 @@ import {
   getUserById,
 } from "../../controllers/userController";
 import { PassportStrategy } from "../../interfaces/index";
-import { Express } from "express";
+
 
 const localStrategy = new LocalStrategy(
   {
@@ -25,14 +25,14 @@ const localStrategy = new LocalStrategy(
 /*
 FIX ME (types) 😭
 */
-passport.serializeUser(function (user: any, done: any) {
+passport.serializeUser(function (user: any, done: (err: any, id?: number) => void) {
   done(null, user.id);
 });
 
 /*
 FIX ME (types) 😭
 */
-passport.deserializeUser(function (id: any, done: any) {
+passport.deserializeUser(function (id: number, done: any) {
   let user = getUserById(id);
   if (user) {
     done(null, user);
