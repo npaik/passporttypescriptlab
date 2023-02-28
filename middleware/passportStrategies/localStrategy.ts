@@ -21,14 +21,25 @@ const localStrategy = new LocalStrategy(
   }
 );
 
+declare module "express" {
+  interface User {
+    id: number,
+    name: string,
+    email?: string,
+    password?: string,
+  }
+}
+
 /*
 FIX ME (types) 😭
 */
+// @ts-ignore -> try not to use but only use when desparate. ignores the type next line
+
 passport.serializeUser(function (
-  user: any,
+  user: Express.User,
   done: (err: any, id?: number) => void
 ) {
-  done(null, user.id);
+  done(null, (user as any).id);
 });
 
 /*

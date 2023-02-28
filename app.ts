@@ -1,6 +1,6 @@
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
-import session from "express-session";
+import session, { MemoryStore } from "express-session";
 import path from "path";
 import passportMiddleware from "./middleware/passportMiddleware";
 const partials = require("express-partials");
@@ -12,8 +12,10 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(partials());
 app.use(express.static(path.join(__dirname, "public")));
+export const memoryStore = new MemoryStore();
 app.use(
   session({
+    store: memoryStore,
     secret: "secret",
     resave: false,
     saveUninitialized: false,

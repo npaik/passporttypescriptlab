@@ -1,0 +1,13 @@
+<h1 class="mt-4">Admin</h1>
+<p class="lead mb-3">Work Bitch <%= currentUser.name %></p>
+<p>Current Sessions</p>
+<% sessionList.forEach(session => { %>
+
+<p>SessionId: <%= session.sid %></p>
+<p>UserId: <%= session.userId %></p>
+<form action="/destroy" method="post">
+  <button class="btn btn-secondary" name="sessionId" value="<%= session.sid %>">
+    Revoke session
+  </button>
+</form>
+<% }) %>

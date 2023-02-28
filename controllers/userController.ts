@@ -28,8 +28,7 @@ function addGitHubUserToDatabase(profile: any) {
   const user = {
     id: profile.id,
     name: profile.displayName,
-    email: "",
-    password: "",
+    role: "user"
   };
   database.push(user);
 }
